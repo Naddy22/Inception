@@ -1,6 +1,6 @@
 #!/bin/bash
 
-service mysql start
+service mysqld start
 mysql_install_db --datadir=/var/lib/mysql --user=mysql --skip-test >> /dev/null
 mysql -e "CREATE DATABASE IF NOT EXISTS \'${SQL_DATABASE}';"
 mysql -e "CREATE USER IF NOT EXISTS \'${SQL_USER}\'@'localhost' IDENTIFIED BY '${SQL_PASSWORD}';"
