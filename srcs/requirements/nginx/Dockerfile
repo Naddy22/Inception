@@ -1,8 +1,7 @@
 FROM	debian:buster
 
-RUN		apt upgrade && \
-		apt install nginx -y && \
-		apt install OpenSSL -y
+RUN		apt update && apt upgrade -y &&\
+		apt install -y nginx openssl
 
 RUN 	mkdir -p /etc/nginx/ssl && \
 		openssl req -x509 -nodes \
