@@ -5,4 +5,8 @@ RUN		apt update -y && apt upgrade -y && \
 
 COPY	conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-CMD		["./tools/run.sh"]
+COPY	./tools/run.sh /
+
+RUN		chmod 755 run.sh
+
+CMD		["./run.sh"]
