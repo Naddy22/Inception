@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo service mysql start
+service mysql start
 
 until mysqladmin ping &>/dev/null; do
 	echo "Waiting for MySQL to be ready..."
