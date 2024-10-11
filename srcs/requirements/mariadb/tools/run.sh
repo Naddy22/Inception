@@ -7,7 +7,7 @@ if [ ! -d "/run/mysqld" ]; then
 fi
 
 chmod -R 770 /var/lib/mysql
-chown -R mysql:mysql /var/lib/mysql
+chgrp -R mysql /var/lib/mysql
 
 service mysql start
 
