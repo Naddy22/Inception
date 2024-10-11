@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [ ! -d "/run/mysqld" ]; then
+	mkdir -p /run/mysqld
+	chown -R mysql:mysql /run/mysqld
+	echo "Waiting on MariaDB daemon..."
+fi
+
+chmod -R 770 /var/lib/mysql
+chown -R mysql:mysql /var/lib/mysql
+
 service mysql start
 
 until mysqladmin ping &>/dev/null; do
