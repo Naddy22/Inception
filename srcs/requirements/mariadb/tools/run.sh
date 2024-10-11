@@ -6,10 +6,10 @@ if [ ! -d "/run/mysqld" ]; then
 	echo "Waiting on MariaDB daemon..."
 fi
 
-chmod -R 770 /var/lib/mysql
-chgrp -R mysql /var/lib/mysql
 
 service mysql start
+chmod -R 770 /var/lib/mysql
+chgrp -R mysql /var/lib/mysql
 
 until mysqladmin ping &>/dev/null; do
 	echo "Waiting for MySQL to be ready..."
