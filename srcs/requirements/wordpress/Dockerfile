@@ -18,4 +18,6 @@ EXPOSE	9000
 
 COPY	./tools/auto-config.sh /
 
+RUN		chmod 755 ./auto-config.sh
+
 CMD		["/auto-config.sh"]
