@@ -48,13 +48,13 @@ networks:
 volumes:
     mariadb:
         driver: local
-        driver_otps:
+        driver_opts:
             type: none
             o: bind
             device: /home/namoisan/data/mariadb
     wordpress:
         driver: local
-        driver_otps:
+        driver_opts:
             type: none
             o: bind
             device: /home/namoisan/data/wordpress
