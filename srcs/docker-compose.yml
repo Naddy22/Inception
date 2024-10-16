@@ -13,20 +13,6 @@ services:
         ports:
         - 3306:3306
 
-    nginx:
-        container_name: nginx
-        build: requirements/nginx
-        networks:
-        - inception
-        depends_on:
-        - wordpress
-        env_file: .env
-        volumes:
-        - wordpress:/var/www/html
-        restart: on-failure
-        ports:
-        - 443:443
-
     wordpress:
         container_name: wordpress
         build: requirements/wordpress/
@@ -40,6 +26,20 @@ services:
         restart: on-failure
         ports:
         - 9000:9000
+
+    nginx:
+        container_name: nginx
+        build: requirements/nginx
+        networks:
+        - inception
+        depends_on:
+        - wordpress
+        env_file: .env
+        volumes:
+        - wordpress:/var/www/html
+        restart: on-failure
+        ports:
+        - 443:443
 
 networks:
     inception:
