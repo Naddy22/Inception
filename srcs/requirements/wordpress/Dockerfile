@@ -4,9 +4,8 @@ RUN		apt update -y && apt upgrade -y && \
 		apt -y install wget && \
 		apt install -y php7.4\
 		php-fpm\
-		php-mysql\
+		php-mysqli\
 		mariadb-client\
-		curl
 
 RUN 	wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www && \
 		cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR.tar.gz && \
