@@ -1,5 +1,3 @@
-version: '3'
-
 services:
     mariadb:
         container_name: mariadb
@@ -23,7 +21,7 @@ services:
         env_file: .env
         volumes:
         - wordpress:/var/www/html
-        restart: on-failure
+        restart: always
         ports:
         - 9000:9000
 
@@ -37,7 +35,7 @@ services:
         env_file: .env
         volumes:
         - wordpress:/var/www/html
-        restart: on-failure
+        restart: always
         ports:
         - 443:443
 

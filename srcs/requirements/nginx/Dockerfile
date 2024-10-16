@@ -10,4 +10,6 @@ COPY	conf/nginx.conf /etc/nginx/conf.d/default.conf
 
 RUN		mkdir -p /var/run/nginx && chmod 755 /var/www/html && chown -R www-data:www-data /var/www/html
 
-CMD [ "nginx", "-g", "daemon off;" ]
+EXPOSE	443
+
+CMD 	[ "nginx", "-g", "daemon off;" ]
