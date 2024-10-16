@@ -18,4 +18,4 @@ EXPOSE	9000
 
 COPY	./tools/auto-config.sh /
 
-CMD		["/anti-config.sh"]
+CMD		["/auto-config.sh"]
