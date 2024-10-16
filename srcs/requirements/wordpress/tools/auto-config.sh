@@ -11,8 +11,8 @@ chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 sleep 10
 
-if [ ! -f /var/www/html/wp-config.php ]
-then
+# if [ ! -f /var/www/html/wp-config.php ]
+# then
 	wp core download --path='/var/www/html' --allow-root
 	wp config create	--allow-root \
 						--dbname=$SQL_DATABASE \
@@ -30,8 +30,8 @@ then
 	wp theme install teluro --path='/var/www/html' --activate --allow-root
 	wp user create "${WP_USER}" "${WP_EMAIL}" \
 					--role=author --user_pass="${WP_PASSWORD}" --allow-root
-else
-	echo "Wordpress already configured."
-fi
+# else
+# 	echo "Wordpress already configured."
+# fi
 
 /usr/sbin/php-fpm7.4 -F
