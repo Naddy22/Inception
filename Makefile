@@ -5,9 +5,9 @@ DATA_PATH = "$(HOME)/$(USER)/data/"
 all: data build run
 
 data:
-	mkdir -p $(HOME)/$(USER)/data
-	mkdir -p $(HOME)/$(USER)/data/mariadb
-	mkdir -p $(HOME)/$(USER)/data/wordpress
+	mkdir -p $(HOME)/data
+	mkdir -p $(HOME)/data/mariadb
+	mkdir -p $(HOME)/data/wordpress
 
 build:
 	docker-compose -f $(DK_COMPOSE) build
