@@ -25,7 +25,7 @@ sleep 10
 
 cd /var/www/html
 
-if [ ! -f /var/www/html/wp-config.php ]
+if [ ! -f wp-config.php ]
 then
 	wp core download --allow-root
 	wp config create	--allow-root \
