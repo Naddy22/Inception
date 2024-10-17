@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 DK_COMPOSE = "./srcs/docker-compose.yml"
-DATA_PATH = "$(HOME)/$(USER)/data/"
+DATA_PATH = "$(HOME)/data/"
 
 all: data build run
 
