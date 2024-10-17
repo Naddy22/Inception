@@ -8,7 +8,6 @@ data:
 	mkdir -p $(HOME)/$(USER)/data
 	mkdir -p $(HOME)/$(USER)/data/mariadb
 	mkdir -p $(HOME)/$(USER)/data/wordpress
-	./data.sh
 
 build:
 	docker-compose -f $(DK_COMPOSE) build
