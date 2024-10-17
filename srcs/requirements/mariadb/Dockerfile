@@ -9,4 +9,6 @@ COPY	./tools/run.sh /
 
 RUN		chmod 755 /etc/mysql/mariadb.conf.d/50-server.cnf && chmod 755 run.sh
 
-CMD		["./run.sh"]
+EXPOSE	3306
+
+ENTRYPOINT		["./run.sh"]

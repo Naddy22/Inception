@@ -6,10 +6,24 @@ then
 	service php7.4-fpm stop
 fi
 
+if [ ${SQL_USER,,} == *"admin" ]
+then
+	echo "--> Username should not contain admin"
+	exit
+fi
+
+if [ ${SQL_PASSWORD,,} == *{SQL_USER,,}* ]
+then
+	echo "--> Password should not contain username"
+	exit
+fi
+
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 sleep 10
+
+cd /var/www/html
 
 # if [ ! -f /var/www/html/wp-config.php ]
 # then
