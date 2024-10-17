@@ -32,14 +32,13 @@ then
 						--dbname=$SQL_DATABASE \
 						--dbuser=$SQL_USER \
 						--dbpass=$SQL_PASSWORD \
-						--dbhost=mariadb:3306 \
-						--skip-check
+						--dbhost=mariadb:3306
 	wp core install --url='namoisan.42.fr' \
 					--title=$WP_TITLE \
 					--admin_user=$WP_USER \
 					--admin_password=$WP_PASSWORD \
 					--admin_email=$WP_EMAIL \
-					--allow-root
+					--skip-email --allow-root
 	# wp theme install teluro --path='/var/www/html' --activate --allow-root
 	wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root
 else
