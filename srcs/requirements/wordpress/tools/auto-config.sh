@@ -35,7 +35,7 @@ cd /var/www/html
 						--dbhost=mariadb:3306 --path='/var/www/html' \
 						--skip-check --allow-root
 	wp core install --path='/var/www/html' \
-					--url= namoisan.42.fr \
+					--url='namoisan.42.fr' \
 					--title=$WP_TITLE \
 					--admin_user=$WP_USER \
 					--admin_password=$WP_PASSWORD \
