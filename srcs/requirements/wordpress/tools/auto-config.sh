@@ -25,8 +25,8 @@ sleep 10
 
 cd /var/www/html
 
-# if [ ! -f /var/www/html/wp-config.php ]
-# then
+if [ ! -f /var/www/html/wp-config.php ]
+then
 	wp core download --allow-root
 	wp config create	--allow-root \
 						--dbname=$SQL_DATABASE \
@@ -34,18 +34,16 @@ cd /var/www/html
 						--dbpass=$SQL_PASSWORD \
 						--dbhost=mariadb:3306 \
 						--skip-check
-	# wp core install --path='/var/www/html' \
-	# 				--url='namoisan.42.fr' \
-	# 				--title=$WP_TITLE \
-	# 				--admin_user=$WP_USER \
-	# 				--admin_password=$WP_PASSWORD \
-	# 				--admin_email=$WP_EMAIL \
-	# 				--skip-email --allow-root
+	wp core install --url='namoisan.42.fr' \
+					--title=$WP_TITLE \
+					--admin_user=$WP_USER \
+					--admin_password=$WP_PASSWORD \
+					--admin_email=$WP_EMAIL \
+					--allow-root
 	# wp theme install teluro --path='/var/www/html' --activate --allow-root
-	# wp user create "${WP_USER}" "${WP_EMAIL}" \
-	# 				--role=author --user_pass="${WP_PASSWORD}" --allow-root
-# else
-# 	echo "Wordpress already configured."
-# fi
+	wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root
+else
+	echo "Wordpress already configured."
+fi
 
 /usr/sbin/php-fpm7.4 -F
