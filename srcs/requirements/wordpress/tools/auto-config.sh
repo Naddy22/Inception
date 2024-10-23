@@ -60,7 +60,7 @@ if [ ! -f wp-config.php ]; then
     ./wp-cli.phar core download --allow-root
 
     # Creates wp-config.php"
-    ./wp-cli.phar config create --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$(cat $SQL_PASSWORD) --dbhost=mariadb:3306 --allow-root
+    ./wp-cli.phar config create --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb:3306 --allow-root
 
     # auto-installs WordPress.
     ./wp-cli.phar core install --url='namoisan.42.fr' --title=$WP_TITLE --admin_user=$WP_USER --admin_password=$WP_PASSWORD --admin_email=$WP_EMAIL --allow-root
