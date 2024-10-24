@@ -34,7 +34,7 @@ wordpress:
 	docker exec -it wordpress $(SHELL)
 
 fclean: 
-	docker-compose -f $(DK_COMPOSE) down -v --rmi all --remove-orphans --timeout || true
+	docker-compose -f $(DK_COMPOSE) down -v --rmi all --remove-orphans --timeout 0 || true
 	docker system prune -all --volumes || true
 	docker volume rm $$(docker volume ls -q);
 	docker image prune -a || true
@@ -43,6 +43,13 @@ fclean:
 	docker builder prune --all || true
 	sudo rm -rf $(DATA_PATH)
 
+eval:
+	docker stop $$(docker ps -qa); \
+	docker rm $$(docker ps -qa); \
+	docker rmi -f $$(docker images -qa); \
+	docker volume rm $$(docker volume ls -q); \
+	docker network rm $$(docker network ls -q) 2>/dev/null
+
 re: fclean all
 
-.PHONY: all re fclean down build
+.PHONY: all re fclean down build eval
