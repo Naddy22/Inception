@@ -35,12 +35,12 @@ then
 						--dbhost=mariadb:3306
 	wp core install --url="namoisan.42.fr" \
 					--title=$WP_TITLE \
-					--admin_user=$WP_USER \
-					--admin_password=$WP_PASSWORD \
-					--admin_email=$WP_EMAIL \
+					--admin_user=$WP_ADMIN \
+					--admin_password=$WP_ADMIN_PWD \
+					--admin_email=$WP_ADMIN_EMAIL \
 					--skip-email --allow-root
 	# wp theme install teluro --path='/var/www/html' --activate --allow-root
-	wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASSWORD --allow-root
+	wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PWD --allow-root
 else
 	echo "Wordpress already configured."
 fi
