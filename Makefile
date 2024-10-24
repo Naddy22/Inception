@@ -34,13 +34,15 @@ wordpress:
 	docker exec -it wordpress $(SHELL)
 
 fclean: 
-	docker-compose -f $(DK_COMPOSE) down -v --rmi all --remove-orphans --timeout 0 || true
-	docker system prune -all --volumes || true
-	docker volume rm $$(docker volume ls -q);
-	docker image prune -a || true
-	docker network prune -f || true
-	docker volume prune -f || true
-	docker builder prune --all || true
+	make stop
+	docker rmi -f $$(docker images -qa); \
+	docker rm -vf $$(docker ps -aq); \
+	docker system prune --all --volumes
+	@if [ -n "$$(docker volume ls -q)" ]; then \
+		docker volume ls -q | xargs docker volume rm; \
+	else \
+		echo "No volumes to delete."; \
+	fi
 	sudo rm -rf $(DATA_PATH)
 
 eval:
